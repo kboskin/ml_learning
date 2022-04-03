@@ -12,6 +12,8 @@ from matplotlib.colors import ListedColormap
 from adaline import AdalineGraientPacket, AdalineGradientStohastic
 from perceptron import Perceptron
 
+from sklearn import datasets
+
 
 # See PyCharm help at https://www.jetbrains.com/help/pycharm/
 
@@ -41,14 +43,9 @@ def plot_decision_regions(X, y, classifier, resolution=0.02):
         )
 
 
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press ⌘F8 to toggle the breakpoint.
-
-
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
-    s = os.path.join('iris.data')
+    s = os.path.join('./iris.data')
     print('URL', s)
 
     df = pd.read_csv(s, header=None, encoding='utf-8')
@@ -118,7 +115,6 @@ if __name__ == '__main__':
     plt.xlabel('Sum of square errors')
     plt.tight_layout()
     plt.show()
-
 
     # gradient method (stohastic), without standartization
 
