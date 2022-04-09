@@ -45,7 +45,7 @@ def plot_decision_regions(X, y, classifier, resolution=0.02):
 
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
-    s = os.path.join('./iris.data')
+    s = os.path.join('../iris.data')
     print('URL', s)
 
     df = pd.read_csv(s, header=None, encoding='utf-8')
@@ -98,7 +98,7 @@ if __name__ == '__main__':
     X_std[:, 0] = (X[:, 0] - X[:, 0].mean()) / X[:, 0].std()
     X_std[:, 1] = (X[:, 1] - X[:, 1].mean()) / X[:, 1].std()
 
-    ada3 = AdalineGraientPacket(n_iter=15, eta=0.01)
+    ada3 = AdalineGraientPacket(n_iter=15, eta=0.01, random_state=1)
     ada3.fit(X_std, y)
 
     plot_decision_regions(X_std, y, classifier=ada3)
@@ -118,12 +118,12 @@ if __name__ == '__main__':
 
     # gradient method (stohastic), without standartization
 
-    ada4 = AdalineGradientStohastic(n_iter=15, eta=0.01, random_state=1)
+    ada4 = AdalineGradientStohastic(eta=0.01, n_iter=15, random_state=1)
     ada4.fit(X_std, y)
 
     plot_decision_regions(X_std, y, classifier=ada4)
 
-    plt.title('Adaline - gradient down')
+    plt.title('Adaline stohastic - gradient down')
     plt.xlabel('lenght of chashelistniq')
     plt.ylabel('lenght of lepestoc')
     plt.legend(loc='upper left')

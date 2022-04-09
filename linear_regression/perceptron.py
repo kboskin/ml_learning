@@ -17,10 +17,7 @@ class Perceptron:
             errors = 0
             for xi, target in zip(X, y):
                 prediction = self.predict(xi)
-                print(f'prediction {prediction}, target {target}')
-                print(f'diff, {(target - prediction)}')
                 update = self.eta * (target - prediction)
-                print(update)
                 self.w_[1:] += update * xi
                 self.w_[0] += update
                 errors += int(update != 0)
