@@ -3,6 +3,7 @@
 # Press ⌃R to execute it or replace it with your code.
 # Press Double ⇧ to search everywhere for classes, files, tool windows, actions, and settings.
 import os
+from datetime import datetime
 
 import numpy as np
 import pandas as pd
@@ -45,6 +46,7 @@ def plot_decision_regions(X, y, classifier, resolution=0.02):
 
 # Press the green button in the gutter to run the script.
 if __name__ == '__main__':
+    time = datetime.now()
     s = os.path.join('../iris.data')
     print('URL', s)
 
@@ -54,28 +56,28 @@ if __name__ == '__main__':
     y = np.where(y == 'Iris-setosa', -1, 1)
     X = df.iloc[0:100, [0, 2]].values
 
-    plt.scatter(X[:50, 0], X[:50, 1], color='red', marker='o', label='scehtinisty')
-    plt.scatter(X[50:100, 0], X[50:100, 1], color='blue', marker='x', label='raznotsvetny')
+    # plt.scatter(X[:50, 0], X[:50, 1], color='red', marker='o', label='scehtinisty')
+    # plt.scatter(X[50:100, 0], X[50:100, 1], color='blue', marker='x', label='raznotsvetny')
 
-    plt.xlabel('lenght of chashelistniq')
-    plt.ylabel('lenght of lepestoc')
-    plt.legend(loc='upper left')
-    plt.show()
+    # plt.xlabel('lenght of chashelistniq')
+    # plt.ylabel('lenght of lepestoc')
+    # plt.legend(loc='upper left')
+    # plt.show()
 
     ppn = Perceptron(eta=0.1, n_iter=10)
     ppn.fit(X, y)
 
-    plt.plot(range(1, len(ppn.errors_) + 1), ppn.errors_, marker='o')
-    plt.xlabel('epochs')
-    plt.ylabel('Num of updates')
-    plt.show()
+    # plt.plot(range(1, len(ppn.errors_) + 1), ppn.errors_, marker='o')
+    # plt.xlabel('epochs')
+    # plt.ylabel('Num of updates')
+    # plt.show()
 
     plot_decision_regions(X, y, ppn)
 
-    plt.xlabel('lenght of chashelistniq')
-    plt.ylabel('lenght of lepestoc')
-    plt.legend(loc='upper left')
-    plt.show()
+    # plt.xlabel('lenght of chashelistniq')
+    # plt.ylabel('lenght of lepestoc')
+    # plt.legend(loc='upper left')
+    # plt.show()
 
     # gradient method (packet), without standartization
     ada1 = AdalineGraientPacket(eta=0.01, n_iter=10)
@@ -84,12 +86,12 @@ if __name__ == '__main__':
     ada2 = AdalineGraientPacket(eta=0.0001, n_iter=10)
     ada2.fit(X, y)
 
-    fi, ax = plt.subplots(nrows=1, ncols=2)
-
-    ax[0].plot(range(1, len(ada1.cost_) + 1), np.log10(ada1.cost_), marker='o')
-    ax[1].plot(range(1, len(ada2.cost_) + 1), np.log10(ada2.cost_), marker='o')
-
-    plt.show()
+    # fi, ax = plt.subplots(nrows=1, ncols=2)
+    #
+    # ax[0].plot(range(1, len(ada1.cost_) + 1), np.log10(ada1.cost_), marker='o')
+    # ax[1].plot(range(1, len(ada2.cost_) + 1), np.log10(ada2.cost_), marker='o')
+    #
+    # plt.show()
 
     # with standartization
 
@@ -103,18 +105,18 @@ if __name__ == '__main__':
 
     plot_decision_regions(X_std, y, classifier=ada3)
 
-    plt.title('Adaline - gradient down')
-    plt.xlabel('lenght of chashelistniq')
-    plt.ylabel('lenght of lepestoc')
-    plt.legend(loc='upper left')
-    plt.tight_layout()
-    plt.show()
+    # plt.title('Adaline - gradient down')
+    # plt.xlabel('lenght of chashelistniq')
+    # plt.ylabel('lenght of lepestoc')
+    # plt.legend(loc='upper left')
+    # plt.tight_layout()
+    # plt.show()
 
-    plt.plot(range(1, len(ada3.cost_) + 1), ada3.cost_, marker='o')
-    plt.xlabel('Epochs')
-    plt.xlabel('Sum of square errors')
-    plt.tight_layout()
-    plt.show()
+    # plt.plot(range(1, len(ada3.cost_) + 1), ada3.cost_, marker='o')
+    # plt.xlabel('Epochs')
+    # plt.xlabel('Sum of square errors')
+    # plt.tight_layout()
+    # plt.show()
 
     # gradient method (stohastic), without standartization
 
@@ -122,16 +124,18 @@ if __name__ == '__main__':
     ada4.fit(X_std, y)
 
     plot_decision_regions(X_std, y, classifier=ada4)
-
-    plt.title('Adaline stohastic - gradient down')
-    plt.xlabel('lenght of chashelistniq')
-    plt.ylabel('lenght of lepestoc')
-    plt.legend(loc='upper left')
-    plt.tight_layout()
-    plt.show()
-
-    plt.plot(range(1, len(ada4.cost_) + 1), ada4.cost_, marker='o')
-    plt.xlabel('Epochs')
-    plt.xlabel('Sum of square errors')
-    plt.tight_layout()
-    plt.show()
+    time2 = datetime.now()
+    print(time2 - time)
+    #
+    # plt.title('Adaline stohastic - gradient down')
+    # plt.xlabel('lenght of chashelistniq')
+    # plt.ylabel('lenght of lepestoc')
+    # plt.legend(loc='upper left')
+    # plt.tight_layout()
+    # plt.show()
+    #
+    # plt.plot(range(1, len(ada4.cost_) + 1), ada4.cost_, marker='o')
+    # plt.xlabel('Epochs')
+    # plt.xlabel('Sum of square errors')
+    # plt.tight_layout()
+    # plt.show()
